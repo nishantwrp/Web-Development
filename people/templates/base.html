@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            {% block title %}
+            {% endblock title %}
+        </title>
+    </head>
+    <body>
+        <br>
+        {% block content %}
+        {% endblock content %}
+        <br>
+        {% include 'counter.html' %}
+        <br>
+        <center>
+            A Nishant Mittal Production
+        </center>
+    </body>
+</html>

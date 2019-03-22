@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block title %}
+SignUp
+{% endblock title %}
+{% block content %}
+<center>
+        {% if redirect == True %}
+        <script>
+            document.location = "../"
+        </script>
+        {% endif %}
+        {% if invalid == True %}
+        <script>
+            alert('Username Already Taken')
+        </script>
+        {% endif %}
+    <form action = "" method = "POST">
+        {% csrf_token %}
+        <input type="text" style="display:none;" value="check" name = "check">
+        <input type="text" name = "name" placeholder="Name" required>
+        <br>
+        <br>
+        <input type="text" name="username" placeholder="Username" required>
+        <br>
+        <br>
+        <input type="password" name="password" placeholder="Password" required>
+        <br>
+        <br>
+        <input type="submit" value="SignUp">
+    </form>
+</center>
+{% endblock content %}

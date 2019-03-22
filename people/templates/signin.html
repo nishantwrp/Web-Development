@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block title %}
+SignIn  
+{% endblock title %}
+{% block content %}
+{% if invalid == True %}
+<script>
+    alert('Invalid Credentials')
+</script>
+{% endif %}
+{% if redirect == True %}
+<script>
+    document.location = "../"
+</script>
+{% endif %}
+<center>
+    <form action="" method="POST">
+        {% csrf_token %}
+        <input type = "text" placeholder="Username" name = "username" required>
+        <br>
+        <br>
+        <input type="text" style="display:none;" value = "check" name="check">
+        <input type="password" name = "password" placeholder="Password" required>
+        <br>
+        <br>
+        <input type = "submit" value="SignIn" > 
+    </form>
+</center>
+{%endblock content %}
