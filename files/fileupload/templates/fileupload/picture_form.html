@@ -1,0 +1,20 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Upload files | nishantwrp</title>
+        <link href="{% static 'fileupload/css/dropzone.css' %}" type="text/css" rel="stylesheet"/>
+    </head>
+    <body>
+        <form class="dropzone" action="{% url 'home' %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="fallback">
+                <input name="file" type="file" multiple />
+            </div>
+        </form>
+        <br>
+        <br>
+        <center>&copy nishantwrp | Nishant Mittal</center>
+        <script src="{% static 'fileupload/js/dropzone.js' %}"></script>
+    </body>
+</html>
