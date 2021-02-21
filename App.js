@@ -1,21 +1,24 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React from "react";
+import { ActivityIndicator } from "react-native";
+import { useFonts } from 'expo-font';
+
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+import Register from "./screens/Register";
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
+  const [loaded] = useFonts({
+    Mali: require('./assets/fonts/Mali-Regular.ttf'),
+  });
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+  if (!loaded) {
+    return (
+      <ActivityIndicator />
+    );
+  } else {
+    return (
+      <SafeAreaProvider>
+        <Register />
+      </SafeAreaProvider>
+    );
+  }
+}
