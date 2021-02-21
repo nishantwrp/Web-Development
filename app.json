@@ -1,0 +1,12 @@
+{
+  "name": "Polls",
+  "displayName": "Polls",
+  "expo": {
+    "name": "Polls",
+    "slug": "Polls",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
