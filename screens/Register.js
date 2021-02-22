@@ -2,8 +2,15 @@ import React, { useRef } from "react";
 import Icon from "@expo/vector-icons/FontAwesome5";
 import { View, StyleSheet } from "react-native";
 import { Button, Input, Text } from "react-native-elements";
+import { useDispatch } from 'react-redux';
 
 export default function Login() {
+  const dispatch = useDispatch()
+
+  function navigateToLogin() {
+    dispatch({ type: "navigation/navigateTo", payload: "Login" });
+  }
+
   const lastNameInput = useRef();
   const emailInput = useRef();
   const passwordInput = useRef();
@@ -15,21 +22,21 @@ export default function Login() {
       </Text>
 
       <View style={styles.inputView}>
-        <View style={{ display: "flex", flexDirection: "row" }}>
+        <View style={{ display: "flex", flexDirection: "row", width: "100%" }}>
           <Input
             placeholder="First Name"
             leftIcon={<Icon name="signature" size={18} color="black" />}
             returnKeyType="next"
             onSubmitEditing={() => lastNameInput.current.focus()}
-            containerStyle={{ width: "50%" }}
+            containerStyle={{width: "50%"}}
           />
           <Input
             ref={lastNameInput}
             placeholder="Last Name"
             leftIcon={<Icon name="signature" size={18} color="black" />}
             returnKeyType="next"
-            inputContainerStyle={{ width: "50%" }}
             onSubmitEditing={() => emailInput.current.focus()}
+            containerStyle={{width: "50%"}}
           />
         </View>
         <Input
@@ -58,7 +65,8 @@ export default function Login() {
           keyboardType="default"
           secureTextEntry={true}
         />
-        <Button title="Register" buttonStyle={{ backgroundColor: "black" }} />
+        <Button title="Register" buttonStyle={{ backgroundColor: "black" }} containerStyle={{width: "100%"}} />
+        <Text style={{paddingTop: 10}}>Already registered? <Text style={{textDecorationLine: "underline"}} onPress={navigateToLogin}>Login Here</Text></Text>
       </View>
     </View>
   );
@@ -73,5 +81,6 @@ const styles = StyleSheet.create({
   inputView: {
     width: "80%",
     maxWidth: 500,
+    alignItems: "center"
   },
 });
